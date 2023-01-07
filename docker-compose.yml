@@ -13,7 +13,7 @@ services:
     volumes: 
       - ./backend:/usr/src/app
     # command for starting the app in debugging mode
-    command: yarn start:debug
+    command: yarn start:debug:docker
     environment:
       NODE_ENV: development
     depends_on: 
