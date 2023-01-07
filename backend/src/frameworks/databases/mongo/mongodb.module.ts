@@ -6,15 +6,13 @@ import { MongoDBService } from './mongodb.service';
 
 @Module({
   imports: [
-    MongooseModule.forFeature([{ name: Contact.name, schema: ContactSchema }]),
     MongooseModule.forRootAsync({
       inject: [Configuration],
       useFactory: (configuration: Configuration) => ({
         uri: configuration.mongoDBConnectionString(),
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
       }),
     }),
+    MongooseModule.forFeature([{ name: Contact.name, schema: ContactSchema }]),
   ],
   providers: [MongoDBService],
   exports: [MongoDBService],

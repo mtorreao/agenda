@@ -1,9 +1,8 @@
-import { Global, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 
 export type acceptedDbs = 'mongo' | 'postgres';
 
-@Global()
 @Injectable()
 export default class Configuration {
   constructor(private readonly configService: ConfigService) {}

@@ -1,15 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { IDatabase } from '../shared/abstracts/database.abstract';
-import { ContactsService } from './contacts.service';
+import { IDatabase } from '../../shared/abstracts/database.abstract';
+import { ContactUseCasesService } from './contact.use-case';
 
-describe('ContactsService', () => {
-  let service: ContactsService;
+describe('ContactUseCaseService', () => {
+  let service: ContactUseCasesService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [],
       providers: [
-        ContactsService,
+        ContactUseCasesService,
         {
           provide: IDatabase,
           useValue: () => jest.fn(),
@@ -17,7 +17,7 @@ describe('ContactsService', () => {
       ],
     }).compile();
 
-    service = module.get<ContactsService>(ContactsService);
+    service = module.get<ContactUseCasesService>(ContactUseCasesService);
   });
 
   it('should be defined', () => {

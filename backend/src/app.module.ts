@@ -1,8 +1,11 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { AppController } from './app.controller';
-import { ContactsModule } from './contacts/contacts.module';
+import { ContactsController } from './controllers';
+import { AppController } from './controllers/app/app.controller';
 import { DatabaseModule } from './frameworks/databases/database.module';
+import Configuration from './shared/configuration';
+import { ContactUseCasesModule } from './use-cases/contact/contact-use-cases.module';
+import { SharedModule } from './shared/shared.module';
 
 @Module({
   imports: [
@@ -10,9 +13,12 @@ import { DatabaseModule } from './frameworks/databases/database.module';
       isGlobal: true,
       envFilePath: ['.env', '.env.local'],
     }),
+    SharedModule,
     DatabaseModule,
-    ContactsModule,
+    ContactUseCasesModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController, ContactsController],
+  providers: [Configuration],
+  exports: [Configuration],
 })
 export class AppModule {}

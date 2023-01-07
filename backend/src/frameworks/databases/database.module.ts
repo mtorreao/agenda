@@ -10,6 +10,7 @@ import { MongoDBService } from './mongo/mongodb.service';
     {
       provide: IDatabase,
       // This is the factory function that will be called to create the provider,
+      inject: [Configuration, MongoDBService],
       useFactory: (
         configuration: Configuration,
         mongoDbService: MongoDBService,
@@ -19,7 +20,6 @@ import { MongoDBService } from './mongo/mongodb.service';
         }
         throw new Error('No database provider found');
       },
-      inject: [Configuration, MongoDBService],
     },
   ],
   exports: [IDatabase],

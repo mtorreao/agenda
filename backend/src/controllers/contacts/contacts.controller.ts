@@ -1,21 +1,21 @@
 import {
-  Controller,
-  Get,
-  Post,
   Body,
-  Patch,
-  Param,
+  Controller,
   Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
 } from '@nestjs/common';
 import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
-import { ContactsService } from './contacts.service';
-import { CreateContactDto } from './dto/create-contact.dto';
-import { UpdateContactDto } from './dto/update-contact.dto';
+import { CreateContactDto } from '../../shared/dto/create-contact.dto';
+import { UpdateContactDto } from '../../shared/dto/update-contact.dto';
+import { ContactUseCasesService } from '../../use-cases/contact/contact.use-case';
 
 @ApiTags('Contatos')
 @Controller('contacts')
 export class ContactsController {
-  constructor(private readonly contactsService: ContactsService) {}
+  constructor(private readonly contactUseCases: ContactUseCasesService) {}
 
   @ApiOperation({
     summary: 'Cria um novo contato',
@@ -23,7 +23,7 @@ export class ContactsController {
   @ApiOkResponse({ description: 'Contato criado com sucesso' })
   @Post()
   create(@Body() createContactDto: CreateContactDto) {
-    return this.contactsService.create(createContactDto);
+    return this.contactUseCases.create(createContactDto);
   }
 
   @ApiOperation({
@@ -31,7 +31,7 @@ export class ContactsController {
   })
   @Get()
   findAll() {
-    return this.contactsService.findAll();
+    return this.contactUseCases.findAll();
   }
 
   @ApiOperation({
@@ -39,7 +39,7 @@ export class ContactsController {
   })
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.contactsService.findOne(id);
+    return this.contactUseCases.findOne(id);
   }
 
   @ApiOperation({
@@ -47,7 +47,7 @@ export class ContactsController {
   })
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateContactDto: UpdateContactDto) {
-    return this.contactsService.update(id, updateContactDto);
+    return this.contactUseCases.update(id, updateContactDto);
   }
 
   @ApiOperation({
@@ -55,6 +55,6 @@ export class ContactsController {
   })
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.contactsService.remove(id);
+    return this.contactUseCases.remove(id);
   }
 }
