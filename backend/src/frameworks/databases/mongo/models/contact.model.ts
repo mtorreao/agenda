@@ -14,6 +14,9 @@ export class Contact {
 
   @Prop()
   phone: string;
+
+  @Prop({ required: true, ref: 'User' })
+  userId: string;
 }
 
 export const ContactSchema = SchemaFactory.createForClass(Contact);

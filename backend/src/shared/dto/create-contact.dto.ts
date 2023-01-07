@@ -1,5 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsEmail, IsPhoneNumber, IsString, MinLength } from 'class-validator';
+import {
+  IsEmail,
+  IsPhoneNumber,
+  IsString,
+  MinLength,
+  ValidateIf,
+} from 'class-validator';
+import { isValidObjectId } from 'mongoose';
 
 export class CreateContactDto {
   @MinLength(3, { message: 'Nome deve ter no mínimo 3 caracteres' })

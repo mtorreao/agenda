@@ -5,16 +5,17 @@ import { Contact } from '../../shared/entities/contact.entity';
 
 @Injectable()
 export class ContactFactoryService {
-  createNewContact(dto: CreateContactDto) {
+  createNewContact(dto: CreateContactDto, userId: string): Contact {
     const newContact = new Contact();
     newContact.name = dto.name;
     newContact.email = dto.email;
     newContact.phone = dto.phone;
+    newContact.userId = userId;
 
     return newContact;
   }
 
-  updateContact(dto: UpdateContactDto) {
+  updateContact(dto: UpdateContactDto): Contact {
     const newContact = new Contact();
     newContact.name = dto.name;
     newContact.email = dto.email;

@@ -6,11 +6,13 @@ import {
   Param,
   Patch,
   Post,
+  Request,
 } from '@nestjs/common';
 import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CreateContactDto } from '../../shared/dto/create-contact.dto';
 import { UpdateContactDto } from '../../shared/dto/update-contact.dto';
-import { ContactUseCasesService } from '../../use-cases/contact/contact.use-case';
+import { Contact } from '../../shared/entities/contact.entity';
+import { ContactUseCasesService } from '../../use-cases/contact/contact-use-cases.service';
 
 @ApiTags('Contatos')
 @Controller('contacts')
@@ -22,16 +24,18 @@ export class ContactsController {
   })
   @ApiOkResponse({ description: 'Contato criado com sucesso' })
   @Post()
-  create(@Body() createContactDto: CreateContactDto) {
-    return this.contactUseCases.create(createContactDto);
+  create(@Body() createContactDto: CreateContactDto, @Request() req) {
+    return this.contactUseCases.create(createContactDto, req.user.userId);
   }
 
   @ApiOperation({
     summary: 'Lista todos os contatos',
   })
   @Get()
-  findAll() {
-    return this.contactUseCases.findAll();
+  findAll(@Request() req): Promise<Contact[]> {
+    return this.contactUseCases.findAll({
+      userId: req.user.userId,
+    });
   }
 
   @ApiOperation({

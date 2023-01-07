@@ -13,4 +13,7 @@ export default class Configuration {
   mongoDBConnectionString() {
     return this.configService.getOrThrow<string>('MONGODB_CONNECTION_STRING');
   }
+  jwtSecret() {
+    return this.configService.getOrThrow<string>('JWT_SECRET');
+  }
 }

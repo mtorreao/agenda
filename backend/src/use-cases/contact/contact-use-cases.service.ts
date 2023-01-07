@@ -1,24 +1,25 @@
 import { Injectable } from '@nestjs/common';
 import { IDatabase } from '../../shared/abstracts/database.abstract';
 import { CreateContactDto } from '../../shared/dto/create-contact.dto';
+import { FindAllDto } from '../../shared/dto/find-all.dto';
 import { UpdateContactDto } from '../../shared/dto/update-contact.dto';
-import { ContactFactoryService } from './contact.factory';
+import { ContactFactoryService } from './contact-factory.service';
 
 @Injectable()
 export class ContactUseCasesService {
   constructor(
-    private readonly repository: IDatabase,
     private readonly contactFactory: ContactFactoryService,
+    private readonly repository: IDatabase,
   ) {}
 
-  create(createContactDto: CreateContactDto) {
+  create(createContactDto: CreateContactDto, userId: string) {
     return this.repository.contacts.create(
-      this.contactFactory.createNewContact(createContactDto),
+      this.contactFactory.createNewContact(createContactDto, userId),
     );
   }
 
-  findAll() {
-    return this.repository.contacts.findAll();
+  findAll(dto: FindAllDto) {
+    return this.repository.contacts.findAll(dto.userId);
   }
 
   findOne(id: string) {

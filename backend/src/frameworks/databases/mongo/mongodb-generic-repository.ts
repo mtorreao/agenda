@@ -2,17 +2,21 @@ import { Model } from 'mongoose';
 import { IGenericRepository } from '../../../shared/abstracts/generic-repository.abstract';
 
 export class MongoGenericRepository<T> implements IGenericRepository<T> {
-  constructor(
-    private readonly repository: Model<T>,
-    private readonly populateOnFind: string[] = [],
-  ) {}
+  constructor(private readonly repository: Model<T>) {}
+
+  findBy(key: string, value: any): Promise<T> {
+    return this.repository
+      .findOne(<T>{
+        [key]: value,
+      })
+      .exec();
+  }
 
   findById(id: string): Promise<T> {
-    // return this.repository.findById(id).populate(this.populateOnFind).exec();
     return this.repository.findById(id).exec();
   }
   findAll(): Promise<T[]> {
-    return this.repository.find().populate(this.populateOnFind).exec();
+    return this.repository.find().exec();
   }
   create(data: T): Promise<T> {
     return this.repository.create(data);
