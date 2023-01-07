@@ -23,10 +23,10 @@ O projeto em si é bem simples, porém pode ficar à vontade para incrementar da
 - [X] Criar Dockerfile para o backend
 - [ ] Criar Dockerfile para o frontend
 - [X] Criar dockercompose.yml na raiz do projeto
-- [ ] Adicionar MongoDB como banco de dados
+- [X] Adicionar MongoDB como banco de dados
 - [X] Criar entitade de Contato(nome, email, telefone)
-- [ ] Criar repositório de Contato
-- [ ] Criar service de Contato
+- [X] Criar repositório de Contato
+- [X] Criar service de Contato
 - [X] Criar controller de Contato
 - [ ] Adicionar serviço de autenticação
 - [ ] Adicionar Autenticação JWT no backend
