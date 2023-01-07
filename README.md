@@ -28,9 +28,9 @@ O projeto em si é bem simples, porém pode ficar à vontade para incrementar da
 - [X] Criar repositório de Contato
 - [X] Criar service de Contato
 - [X] Criar controller de Contato
-- [ ] Adicionar serviço de autenticação
-- [ ] Adicionar Autenticação JWT no backend
-- [ ] Adicionar Autenticação JWT no frontend
+- [X] Adicionar serviço de autenticação
+- [X] Adicionar Autenticação JWT no backend
+- [X] Adicionar Autenticação JWT no frontend
 - [ ] Criar tela de login
 - [ ] Criar tela de cadastro
 - [ ] Criar tela de listagem de contatos
