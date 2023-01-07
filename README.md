@@ -18,16 +18,16 @@ O projeto em si é bem simples, porém pode ficar à vontade para incrementar da
 
 ## Roadmap
 
-- [ ] Criar projeto backend em Node.js com Nest.js
+- [X] Criar projeto backend em Node.js com Nest.js
 - [ ] Criar projeto frontend em Angular v9
-- [ ] Criar Dockerfile para o backend
+- [X] Criar Dockerfile para o backend
 - [ ] Criar Dockerfile para o frontend
-- [ ] Criar dockercompose.yml na raiz do projeto
+- [X] Criar dockercompose.yml na raiz do projeto
 - [ ] Adicionar MongoDB como banco de dados
-- [ ] Criar entitade de Contato(nome, email, telefone)
+- [X] Criar entitade de Contato(nome, email, telefone)
 - [ ] Criar repositório de Contato
 - [ ] Criar service de Contato
-- [ ] Criar controller de Contato
+- [X] Criar controller de Contato
 - [ ] Adicionar serviço de autenticação
 - [ ] Adicionar Autenticação JWT no backend
 - [ ] Adicionar Autenticação JWT no frontend
@@ -43,4 +43,9 @@ O projeto em si é bem simples, porém pode ficar à vontade para incrementar da
 
 ```bash
 $ docker-compose up -d
+```
+
+Swagger
+```
+http://localhost:9000/swagger
 ```
