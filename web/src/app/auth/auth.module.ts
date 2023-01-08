@@ -1,32 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatInputModule } from '@angular/material/input';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RouterModule } from '@angular/router';
+import { MaterialAngularModule } from '../material-angular.module';
+import { AuthFormComponent } from './components/auth-form/auth-form.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
-
-const routes = [
-  {
-    path: 'sign-in',
-    component: SignInComponent,
-  },
-];
+import { SignUpComponent } from './pages/sign-up/sign-up.component';
 
 @NgModule({
-  declarations: [SignInComponent],
-  exports: [SignInComponent],
+  declarations: [SignInComponent, SignUpComponent, AuthFormComponent],
+  exports: [SignInComponent, SignUpComponent],
   imports: [
-    RouterModule.forChild(routes),
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    MatCardModule,
-    MatInputModule,
-    MatButtonModule,
-    MatProgressSpinnerModule,
+    MaterialAngularModule,
   ],
 })
 export class AuthModule {}

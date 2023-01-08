@@ -1,15 +1,26 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <span>Minha Agenda</span>
+    <span>
+      <a routerLink="/" routerLinkActive="active" mat-button> Minha Agenda </a>
+    </span>
     <span class="spacer"></span>
     <nav>
-      <a mat-button routerLink="/auth/sign-in" routerLinkActive="active"
+      <a
+        *ngIf="!isLogged"
+        mat-button
+        routerLink="/auth/sign-in"
+        routerLinkActive="active"
         >Login</a
       >
       <span class="spacer-m1"></span>
-      <a mat-button routerLink="/auth/sign-up" routerLinkActive="active"
+      <a
+        *ngIf="!isLogged"
+        mat-button
+        routerLink="/auth/sign-up"
+        routerLinkActive="active"
         >Cadastro</a
       >
+      <a *ngIf="isLogged" mat-button (click)="signOut()">Sair</a>
     </nav>
   </mat-toolbar-row>
 </mat-toolbar>

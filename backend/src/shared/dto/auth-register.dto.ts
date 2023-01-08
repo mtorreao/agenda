@@ -11,10 +11,8 @@ export class AuthRegisterDto {
   @IsStrongPassword(
     {
       minLength: 8,
-      minLowercase: 1,
       minUppercase: 1,
       minNumbers: 1,
-      minSymbols: 1,
     },
     { message: 'Senha não atende aos critérios mínimos de segurança' },
   )

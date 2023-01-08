@@ -3,11 +3,11 @@ import { AuthService } from '../../auth.service';
 import { AuthFormData } from '../../dtos/auth-form-data.dto';
 
 @Component({
-  selector: 'app-sign-in',
-  templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.css'],
+  selector: 'app-sign-up',
+  templateUrl: './sign-up.component.html',
+  styleUrls: ['./sign-up.component.css'],
 })
-export class SignInComponent {
+export class SignUpComponent {
   constructor(private authService: AuthService) {}
   isLoading = false;
   hasError = false;
@@ -16,7 +16,7 @@ export class SignInComponent {
     try {
       this.isLoading = true;
       await this.authService
-        .login(formData.email, formData.password)
+        .register(formData.email, formData.password)
         .toPromise();
     } catch (error) {
       this.hasError = true;
