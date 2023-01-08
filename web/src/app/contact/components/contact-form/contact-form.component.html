@@ -1,1 +1,62 @@
-<p>contact-form works!</p>
+<h4>{{ type === "create" ? "Novo contato" : "Editar contato" }}</h4>
+
+<form [formGroup]="form" class="form" (ngSubmit)="submit()">
+  <mat-form-field class="full-width">
+    <mat-label>Nome</mat-label>
+    <input
+      matInput
+      formControlName="name"
+      placeholder="Alex Salvador"
+      type="text"
+    />
+    <mat-error *ngIf="form.controls['name'].hasError('required')">
+      Nome é obrigatório
+    </mat-error>
+    <mat-error *ngIf="form.controls['name'].hasError('minlength')">
+      Mínimo de
+      {{ form.controls["name"].errors["minlength"].requiredLength }}
+      caracteres
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <mat-label>Email</mat-label>
+    <input
+      matInput
+      formControlName="email"
+      placeholder="Ex. hello@gmail.com"
+      type="email"
+    />
+    <mat-error *ngIf="form.controls['email'].hasError('email')">
+      Não é um email válido
+    </mat-error>
+    <mat-error *ngIf="form.controls['email'].hasError('required')">
+      Email é obrigatório
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <mat-label>Telefone</mat-label>
+    <input
+      matInput
+      type="tel"
+      formControlName="phone"
+      placeholder="8192312344"
+    />
+    <mat-error *ngIf="form.controls['phone'].hasError('required')">
+      Telefone é obrigatório
+    </mat-error>
+  </mat-form-field>
+  <br />
+  <mat-spinner
+    *ngIf="isLoading == true"
+    class="spinner"
+    [diameter]="30"
+  ></mat-spinner>
+  <button
+    *ngIf="isLoading == false"
+    mat-raised-button
+    color="primary"
+    type="submit"
+  >
+    {{ type === "create" ? "Salvar" : "Atualizar" }}
+  </button>
+</form>

@@ -1,14 +1,19 @@
 <div class="container-sm">
   <div class="row justify-content-md-center">
     <div class="col-sm-12 col-md-6">
-      <app-list-contacts class="list-container"></app-list-contacts>
+      <app-list-contacts
+        class="list-container"
+        [contacts]="contacts$ | async"
+        (onDeleteEM)="onDelete($event)"
+        (onEditEM)="onEdit($event)"
+      ></app-list-contacts>
     </div>
 
     <button
       mat-fab
       color="accent"
       class="add-contact-button"
-      aria-label="Example icon button with a home icon"
+      (click)="openContactFormDialog()"
     >
       <mat-icon>add</mat-icon>
     </button>

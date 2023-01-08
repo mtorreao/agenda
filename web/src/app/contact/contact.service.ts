@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { ContactDto } from './dtos/contact.dto';
 
 @Injectable({
@@ -23,12 +23,28 @@ export class ContactService {
   getContacts() {
     return this.http
       .get(`${this.baseUrl}/contacts`, this.getHttpOptions())
-      .pipe(tap((res: ContactDto[]) => res));
+      .pipe(tap((contacts: ContactDto[]) => contacts));
   }
 
   deleteContact(id: number) {
     return this.http.delete(
       `${this.baseUrl}/contacts/${id}`,
+      this.getHttpOptions()
+    );
+  }
+
+  createContact(contact: ContactDto) {
+    return this.http.post(
+      `${this.baseUrl}/contacts`,
+      contact,
+      this.getHttpOptions()
+    );
+  }
+
+  updateContact(id: number, value: any) {
+    return this.http.patch(
+      `${this.baseUrl}/contacts/${id}`,
+      value,
       this.getHttpOptions()
     );
   }

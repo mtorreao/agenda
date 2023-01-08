@@ -33,9 +33,9 @@
             placeholder="Ex. Abcd1234"
           />
           <mat-hint *ngIf="type === 'register'">
-            >Senha deve ter no mínimo de 8 caracteres, 1 número e 1 letra
-            maiúscula</mat-hint
-          >
+            Senha deve ter no mínimo de 8 caracteres, 1 número e 1 letra
+            maiúscula
+          </mat-hint>
           <mat-error *ngIf="form.controls['password'].hasError('minLength')">
             Não é uma senha válida
           </mat-error>
