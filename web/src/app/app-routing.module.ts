@@ -7,10 +7,6 @@ import { IndexComponent as ContactIndex } from './contact/pages/index/index.comp
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: HomeComponent,
-  },
   // Contacts
   {
     path: 'contacts',
@@ -36,6 +32,10 @@ const routes: Routes = [
         component: SignUpComponent,
       },
     ],
+  },
+  {
+    path: '**',
+    component: HomeComponent,
   },
 ];
 

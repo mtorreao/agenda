@@ -5,15 +5,13 @@
     align-items: center;
     height: 100vh;
     background-color: #f5f5f5;
-
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .mat-card-content {
-    display: flex;
-    flex-direction: column;
-
     min-width: 260px;
-    min-height: 140px;
+    width: 320px;
 }
 
 .mat-card-header {
@@ -31,4 +29,5 @@
 
 .full-width {
     width: 100%;
+    margin-bottom: 16px;
 }

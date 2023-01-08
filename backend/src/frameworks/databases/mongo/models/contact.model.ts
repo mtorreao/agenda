@@ -17,7 +17,7 @@ export class Contact {
   @Prop({ required: true })
   name: string;
 
-  @Prop({ unique: true, required: true })
+  @Prop({ required: true })
   email: string;
 
   @Prop()

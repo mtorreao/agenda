@@ -32,7 +32,6 @@ export class IndexComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(async (needUpdate) => {
-      console.log('The dialog was closed');
       if (needUpdate) {
         this.loadContacts();
         this.showSnackBar('Contato salvo');

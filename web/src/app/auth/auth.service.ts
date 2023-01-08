@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, ObservableInput } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { LoginResponse } from './dtos/login-response.dto';
 
 @Injectable({
@@ -17,7 +17,6 @@ export class AuthService {
 
   checkToken(): void {
     const accessToken = localStorage.getItem('accessToken');
-    console.log('AuthService -> ngOnInit -> accessToken', accessToken);
     this.isLogged$.next(!!accessToken);
   }
 

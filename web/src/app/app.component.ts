@@ -16,7 +16,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subs.map((s) => s.unsubscribe());
-    console.log('AppComponent -> ngOnDestroy');
   }
 
   ngOnInit(): void {
@@ -24,7 +23,6 @@ export class AppComponent implements OnInit, OnDestroy {
       .pipe(
         map((isLogged) => {
           this.isLogged = isLogged;
-          console.log('AppComponent -> ngOnInit -> tap', isLogged);
         })
       )
       .subscribe();

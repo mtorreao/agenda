@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../auth.service';
 import { AuthFormData } from '../../dtos/auth-form-data.dto';
 
@@ -8,7 +9,7 @@ import { AuthFormData } from '../../dtos/auth-form-data.dto';
   styleUrls: ['./sign-up.component.css'],
 })
 export class SignUpComponent {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private snackBar: MatSnackBar) {}
   isLoading = false;
   hasError = false;
 
@@ -20,6 +21,9 @@ export class SignUpComponent {
         .toPromise();
     } catch (error) {
       this.hasError = true;
+      this.snackBar.open(error.error.message[0], '', {
+        duration: 5000,
+      });
     } finally {
       this.isLoading = false;
     }

@@ -13,6 +13,8 @@ export class AuthRegisterDto {
       minLength: 8,
       minUppercase: 1,
       minNumbers: 1,
+      minLowercase: 1,
+      minSymbols: 0,
     },
     { message: 'Senha não atende aos critérios mínimos de segurança' },
   )

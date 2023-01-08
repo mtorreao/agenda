@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ContactService } from '../../contact.service';
 import { ContactDto } from '../../dtos/contact.dto';
 
@@ -13,6 +14,7 @@ export class ContactFormComponent implements OnInit {
   constructor(
     private dialogRef: MatDialogRef<ContactFormComponent>,
     private contactService: ContactService,
+    private snack: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) private contact?: ContactDto
   ) {}
 
@@ -37,7 +39,6 @@ export class ContactFormComponent implements OnInit {
   }
 
   async submit() {
-    console.log('submit');
     if (this.form.invalid) {
       return;
     }
@@ -52,7 +53,9 @@ export class ContactFormComponent implements OnInit {
       }
       this.dialogRef.close(true);
     } catch (error) {
-      console.error(error);
+      this.snack.open(error.error.message[0], '', {
+        duration: 5000,
+      });
     } finally {
       this.isLoading = false;
     }

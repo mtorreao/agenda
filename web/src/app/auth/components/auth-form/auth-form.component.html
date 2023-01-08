@@ -21,9 +21,6 @@
             Não é um email válido
           </mat-error>
         </mat-form-field>
-
-        <br />
-
         <mat-form-field class="full-width">
           <mat-label>Senha</mat-label>
           <input
@@ -33,11 +30,30 @@
             placeholder="Ex. Abcd1234"
           />
           <mat-hint *ngIf="type === 'register'">
-            Senha deve ter no mínimo de 8 caracteres, 1 número e 1 letra
-            maiúscula
+            Senha deve ter no mínimo de 8 caracteres, 1 número, 1 letra
+            maiúscula e 1 letra minúscula
           </mat-hint>
-          <mat-error *ngIf="form.controls['password'].hasError('minLength')">
-            Não é uma senha válida
+          <mat-error *ngIf="form.controls['password'].hasError('pattern')">
+            Senha deve ter no mínimo de 8 caracteres, 1 número, 1 letra
+            maiúscula e 1 letra minúscula
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field *ngIf="type === 'register'" class="full-width">
+          <mat-label>Confirmação de senha</mat-label>
+          <input
+            matInput
+            type="password"
+            formControlName="passwordConfirmation"
+            (blur)="confirmPassword()"
+          />
+          <mat-error
+            *ngIf="
+              form.controls['passwordConfirmation'].hasError(
+                'passwordConfirmation'
+              )
+            "
+          >
+            Senha não confere
           </mat-error>
         </mat-form-field>
       </mat-card-content>
