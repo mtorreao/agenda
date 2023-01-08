@@ -42,11 +42,11 @@ export class AuthFormComponent implements OnInit {
 
   confirmPassword() {
     if (this.form.value.password !== this.form.value.passwordConfirmation) {
-      this.form.controls.passwordConfirmation.setErrors({
+      this.form.controls.passwordConfirmation?.setErrors({
         passwordConfirmation: true,
       });
     } else {
-      this.form.controls.passwordConfirmation.setErrors(null);
+      this.form.controls.passwordConfirmation?.setErrors(null);
     }
   }
 }
