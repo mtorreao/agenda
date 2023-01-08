@@ -19,9 +19,9 @@ O projeto em si é bem simples, porém pode ficar à vontade para incrementar da
 ## Roadmap
 
 - [X] Criar projeto backend em Node.js com Nest.js
-- [ ] Criar projeto frontend em Angular v9
+- [X] Criar projeto frontend em Angular v9
 - [X] Criar Dockerfile para o backend
-- [ ] Criar Dockerfile para o frontend
+- [X] Criar Dockerfile para o frontend
 - [X] Criar dockercompose.yml na raiz do projeto
 - [X] Adicionar MongoDB como banco de dados
 - [X] Criar entitade de Contato(nome, email, telefone)
