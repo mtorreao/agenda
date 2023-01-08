@@ -1,5 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { ContactService } from '../../contact.service';
 import { ContactDto } from '../../dtos/contact.dto';
 
@@ -8,23 +8,27 @@ import { ContactDto } from '../../dtos/contact.dto';
   templateUrl: './list-contacts.component.html',
   styleUrls: ['./list-contacts.component.css'],
 })
-export class ListContactsComponent implements OnInit, OnDestroy {
+export class ListContactsComponent implements OnInit {
   contacts$ = new BehaviorSubject<ContactDto[]>([]);
-  private subs: Subscription[] = [];
+  @Output() onEditEM = new EventEmitter<ContactDto>();
 
   constructor(private contactService: ContactService) {}
 
-  ngOnDestroy(): void {
-    this.subs.forEach((s) => s.unsubscribe());
-  }
-
   ngOnInit(): void {
-    const s = this.contactService.getContacts().subscribe((contacts: ContactDto[]) => {
-      console.log(contacts);
-      this.contacts$.next(contacts);
-    });
-    this.subs.push(s);
+    this.getContacts();
   }
 
-  onEdit() {}
+  onEdit(contact: ContactDto) {
+    this.onEditEM.emit(contact);
+  }
+
+  async onDelete(contact: ContactDto) {
+    await this.contactService.deleteContact(contact.id).toPromise();
+    this.getContacts();
+  }
+
+  private async getContacts() {
+    const contacts = await this.contactService.getContacts().toPromise();
+    this.contacts$.next(contacts);
+  }
 }

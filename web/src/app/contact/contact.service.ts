@@ -19,9 +19,17 @@ export class ContactService {
       },
     };
   }
+
   getContacts() {
     return this.http
       .get(`${this.baseUrl}/contacts`, this.getHttpOptions())
       .pipe(tap((res: ContactDto[]) => res));
+  }
+
+  deleteContact(id: number) {
+    return this.http.delete(
+      `${this.baseUrl}/contacts/${id}`,
+      this.getHttpOptions()
+    );
   }
 }

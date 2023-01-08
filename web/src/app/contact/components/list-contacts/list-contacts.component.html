@@ -1,4 +1,4 @@
-<mat-card *ngFor="let contact of contacts$ | async" style="margin-bottom: 20px;">
+<mat-card *ngFor="let contact of contacts$ | async" style="margin-bottom: 20px">
   <mat-card-content class="card-content">
     <div class="card-content-text">
       <h5>
@@ -8,10 +8,10 @@
       <p><strong>Telefone: </strong>{{ contact.phone }}</p>
     </div>
     <div class="button-container">
-      <button mat-mini-fab color="basic">
+      <button mat-mini-fab color="basic" (click)="onEdit(contact)">
         <mat-icon>edit</mat-icon>
       </button>
-      <button mat-mini-fab color="basic">
+      <button mat-mini-fab color="basic" (click)="onDelete(contact)">
         <mat-icon>delete</mat-icon>
       </button>
     </div>
