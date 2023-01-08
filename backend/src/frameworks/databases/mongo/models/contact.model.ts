@@ -6,6 +6,14 @@ export type ContactDocument = Contact & Document;
   timestamps: true,
 })
 export class Contact {
+  @Prop({
+    virtual: 'id',
+    get: function () {
+      return this._id;
+    },
+  })
+  id: string;
+
   @Prop({ required: true })
   name: string;
 

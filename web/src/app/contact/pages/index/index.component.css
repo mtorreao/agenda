@@ -1,0 +1,9 @@
+.list-container {
+    margin: 10px;
+}
+
+.add-contact-button {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}

@@ -1,1 +1,19 @@
-<p>list-contacts works!</p>
+<mat-card *ngFor="let contact of contacts$ | async" style="margin-bottom: 20px;">
+  <mat-card-content class="card-content">
+    <div class="card-content-text">
+      <h5>
+        {{ contact.name }}
+      </h5>
+      <p><strong>Email: </strong>{{ contact.email }}</p>
+      <p><strong>Telefone: </strong>{{ contact.phone }}</p>
+    </div>
+    <div class="button-container">
+      <button mat-mini-fab color="basic">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-mini-fab color="basic">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>

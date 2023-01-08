@@ -18,8 +18,10 @@ export class ContactUseCasesService {
     );
   }
 
-  findAll(dto: FindAllDto) {
-    return this.repository.contacts.findAll(dto.userId);
+  async findAll(dto: FindAllDto) {
+    return (await this.repository.contacts.findAll(dto.userId)).map((c) =>
+      this.contactFactory.mapContact(c),
+    );
   }
 
   findOne(id: string) {
