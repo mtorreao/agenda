@@ -20,6 +20,14 @@
         routerLinkActive="active"
         >Cadastro</a
       >
+      <a
+        *ngIf="isLogged"
+        mat-button
+        routerLink="/contacts"
+        routerLinkActive="active"
+        >Contatos</a
+      >
+      <span *ngIf="isLogged" class="spacer-m1"></span>
       <a *ngIf="isLogged" mat-button (click)="signOut()">Sair</a>
     </nav>
   </mat-toolbar-row>
