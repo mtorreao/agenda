@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const importExports = [
   MatCardModule,
@@ -14,7 +15,8 @@ const importExports = [
   MatProgressSpinnerModule,
   MatToolbarModule,
   MatIconModule,
-  MatDialogModule
+  MatDialogModule,
+  MatSnackBarModule,
 ];
 
 @NgModule({

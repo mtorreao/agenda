@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { BehaviorSubject } from 'rxjs';
 import { ContactFormComponent } from '../../components/contact-form/contact-form.component';
 import { ContactService } from '../../contact.service';
@@ -15,7 +16,8 @@ export class IndexComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog,
-    private contactService: ContactService
+    private contactService: ContactService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -33,6 +35,7 @@ export class IndexComponent implements OnInit {
       console.log('The dialog was closed');
       if (needUpdate) {
         this.loadContacts();
+        this.showSnackBar('Contato salvo');
       }
     });
   }
@@ -42,12 +45,22 @@ export class IndexComponent implements OnInit {
   }
 
   async onDelete(contact: ContactDto) {
-    await this.contactService.deleteContact(contact.id).toPromise();
-    this.loadContacts();
+    try {
+      await this.contactService.deleteContact(contact.id).toPromise();
+      this.showSnackBar('Contato excluído');
+      this.loadContacts();
+    } catch (error) {
+      this.showSnackBar('Ocorreu um erro ao tentar excluir um contato');
+    }
   }
 
   private async loadContacts() {
-    console.log('loadContacts');
     this.contacts$.next(await this.contactService.getContacts().toPromise());
+  }
+
+  private showSnackBar(message: string) {
+    this.snackBar.open(message, 'OK', {
+      duration: 3000,
+    });
   }
 }

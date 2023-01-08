@@ -44,6 +44,10 @@
     <mat-error *ngIf="form.controls['phone'].hasError('required')">
       Telefone é obrigatório
     </mat-error>
+
+    <mat-error *ngIf="form.controls['phone'].hasError('pattern')">
+      Telefone não é válido
+    </mat-error>
   </mat-form-field>
   <br />
   <mat-spinner
