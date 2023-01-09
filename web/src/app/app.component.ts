@@ -19,19 +19,18 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    const s = this.authService.isLogged$
+    this.authService.checkToken();
+    const sub = this.authService.isLogged$
       .pipe(
         map((isLogged) => {
           this.isLogged = isLogged;
         })
       )
       .subscribe();
-    this.authService.checkToken();
-    this.subs.push(s);
+    this.subs.push(sub);
   }
 
   signOut() {
     this.authService.signOut();
-    this.isLogged = false;
   }
 }

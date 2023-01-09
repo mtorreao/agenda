@@ -1,35 +1,41 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { BehaviorSubject, of } from 'rxjs';
 import { AppComponent } from './app.component';
+import { AuthService } from './auth/auth.service';
 
 describe('AppComponent', () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+  const authServiceSpy = jasmine.createSpyObj('AuthService', {
+    isLogged$: {
+      pipe: () => of(true),
+    },
+    checkToken: null,
+    signOut: Promise.resolve(),
+  });
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule
       ],
+      providers: [
+        { provide: AuthService, useValue: authServiceSpy },
+      ],
       declarations: [
         AppComponent
       ],
     }).compileComponents();
+    component = TestBed.createComponent(AppComponent).componentInstance;
   }));
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    expect(component).toBeTruthy();
   });
 
-  it(`should have as title 'my-agenda'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('my-agenda');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('my-agenda app is running!');
+  it('should sign out', () => {
+    component.signOut();
+    expect(authServiceSpy.signOut).toHaveBeenCalled();
   });
 });

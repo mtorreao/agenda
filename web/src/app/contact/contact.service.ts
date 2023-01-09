@@ -26,7 +26,7 @@ export class ContactService {
       .pipe(tap((contacts: ContactDto[]) => contacts));
   }
 
-  deleteContact(id: number) {
+  deleteContact(id: string) {
     return this.http.delete(
       `${this.baseUrl}/contacts/${id}`,
       this.getHttpOptions()
@@ -41,7 +41,7 @@ export class ContactService {
     );
   }
 
-  updateContact(id: number, value: any) {
+  updateContact(id: string, value: any) {
     return this.http.patch(
       `${this.baseUrl}/contacts/${id}`,
       value,
