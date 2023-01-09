@@ -21,7 +21,7 @@ export class SignUpComponent {
         .toPromise();
     } catch (error) {
       this.hasError = true;
-      this.snackBar.open(error.error.message[0], '', {
+      this.snackBar.open(error.error.message, '', {
         duration: 5000,
       });
     } finally {

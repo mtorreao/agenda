@@ -29,6 +29,10 @@ export class AuthUseCasesService {
   }
 
   async register(dto: AuthRegisterDto): Promise<AuthLoginResponseDto> {
+    const userExists = await this.repository.users.findBy('email', dto.email);
+    if (userExists) {
+      return null;
+    }
     const user = await this.repository.users.create(
       this.authFactory.createUserEntity(dto),
     );

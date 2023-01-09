@@ -37,7 +37,11 @@ export class AuthController {
     summary: 'Registra um novo usuário',
   })
   @Post('register')
-  register(@Body() body: AuthRegisterDto) {
-    return this.authUseCases.register(body);
+  async register(@Body() body: AuthRegisterDto) {
+    const resp = await this.authUseCases.register(body);
+    if (!resp) {
+      throw new HttpException('Usuário já cadastrado', HttpStatus.UNAUTHORIZED);
+    }
+    return resp;
   }
 }

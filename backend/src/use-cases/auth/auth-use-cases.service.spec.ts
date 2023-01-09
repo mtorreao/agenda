@@ -31,8 +31,6 @@ describe('AuthUseCasesService', () => {
   };
   const authMock: IAuth = {
     signIn: jest.fn(),
-    signOut: jest.fn(),
-    signUp: jest.fn(),
   };
   const authFactoryMock: AuthFactoryService = {
     mapToUserEntityWithoutPass: jest.fn(),

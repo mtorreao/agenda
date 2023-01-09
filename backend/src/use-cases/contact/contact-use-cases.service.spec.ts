@@ -23,9 +23,10 @@ describe('ContactUseCaseService', () => {
     contacts: genericRepoMock,
     users: genericRepoMock,
   };
-  const contactFactoryService: ContactFactoryService = {
+  const contactFactoryServiceMock = {
     createNewContact: jest.fn(),
     updateContact: jest.fn(),
+    mapContact: jest.fn(),
   };
 
   beforeEach(async () => {
@@ -35,7 +36,7 @@ describe('ContactUseCaseService', () => {
         ContactUseCasesService,
         {
           provide: ContactFactoryService,
-          useFactory: () => contactFactoryService,
+          useFactory: () => contactFactoryServiceMock,
         },
         {
           provide: IDatabase,
@@ -77,6 +78,7 @@ describe('ContactUseCaseService', () => {
       },
     ];
     repositoryMock.contacts.findAll.mockResolvedValue(expected);
+    contactFactoryServiceMock.mapContact.mockImplementation((c) => c);
 
     // Act
     const result = service.findAll({ userId: expected[0].userId });

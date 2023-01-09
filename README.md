@@ -31,21 +31,34 @@ O projeto em si é bem simples, porém pode ficar à vontade para incrementar da
 - [X] Adicionar serviço de autenticação
 - [X] Adicionar Autenticação JWT no backend
 - [X] Adicionar Autenticação JWT no frontend
-- [ ] Criar tela de login
-- [ ] Criar tela de cadastro
-- [ ] Criar tela de listagem de contatos
-- [ ] Criar tela de cadastro de contatos
-- [ ] Criar tela de edição de contatos
-- [ ] Criar tela de exclusão de contatos
-- [ ] Criar tela de detalhes de contatos
+- [X] Criar tela de login
+- [X] Criar tela de cadastro
+- [X] Criar tela de listagem de contatos
+- [X] Criar tela de cadastro de contatos
+- [X] Criar tela de edição de contatos
+- [X] Criar tela de exclusão de contatos
+- [X] Criar tela de detalhes de contatos
+- [X] Arquitetura database-agnostic
+- [X] Proteger rotas com autenticação
+- [X] Cobertura de testes > 80%
 
-## Running the app
+## Requesitos
+
+Aplicação necessita de docker e docker-compose instalados.
+
+**Rodar o projeto**
 
 ```bash
 $ docker-compose up -d
 ```
 
-Swagger
+**Swagger**
 ```
 http://localhost:9000/swagger
 ```
+
+**Frontend**
+```
+http://localhost:4200
+```
+
