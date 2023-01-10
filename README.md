@@ -49,6 +49,7 @@ Aplicação necessita de docker e docker-compose instalados.
 **Rodar o projeto**
 
 ```bash
+$ cd backend && yarn && cd ../web && yarn && cd ..
 $ docker-compose up -d
 ```
 
