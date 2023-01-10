@@ -2,9 +2,9 @@ FROM node:16.14.2-slim
 
 WORKDIR /usr/src/app
 
-RUN npm install -g @angular/cli@9
+RUN npm install -g @angular/cli@9 npm@8.19.2
 
-COPY package.json package-lock.json ./
+COPY package.json yarn.lock ./
 
 RUN yarn install
 
