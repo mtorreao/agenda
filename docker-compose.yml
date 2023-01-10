@@ -22,7 +22,7 @@ services:
     networks: 
       - agenda_bridge
     ports: 
-      - 9000:3000
+      - 3000:3000
       # debugging port
       - 9229:9229
     volumes: 

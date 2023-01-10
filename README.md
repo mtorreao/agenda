@@ -48,10 +48,19 @@ Aplicação necessita de docker e docker-compose instalados.
 
 **Rodar o projeto**
 
+Com docker-compose
 ```bash
 $ cd backend && yarn && cd ../web && yarn && cd ..
 $ docker-compose up -d
 ```
+Sem docker-compose
+```bash
+$ cd backend && yarn && yarn start:dev
+# Em outro terminal
+$ cd web && yarn && yarn start
+```
+
+Obs: Mudei para usar um mongo in cloud.
 
 **Swagger**
 ```

@@ -9,7 +9,7 @@ import { LoginResponse } from './dtos/login-response.dto';
   providedIn: 'root',
 })
 export class AuthService {
-  apiUrl = 'http://localhost:9000/api';
+  apiUrl = 'http://localhost:3000/api';
   public isLogged$ = new BehaviorSubject<boolean>(false);
   redirectUrl: string;
 

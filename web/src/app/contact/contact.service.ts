@@ -7,7 +7,7 @@ import { ContactDto } from './dtos/contact.dto';
   providedIn: 'root',
 })
 export class ContactService {
-  private baseUrl = 'http://localhost:9000/api';
+  private baseUrl = 'http://localhost:3000/api';
 
   constructor(private http: HttpClient) {}
 
