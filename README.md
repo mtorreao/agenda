@@ -50,7 +50,6 @@ Aplicação necessita de docker e docker-compose instalados.
 
 Com docker-compose
 ```bash
-$ cd backend && yarn && cd ../web && yarn && cd ..
 $ docker-compose up -d
 ```
 Sem docker-compose
@@ -64,7 +63,7 @@ Obs: Mudei para usar um mongo in cloud.
 
 **Swagger**
 ```
-http://localhost:9000/swagger
+http://localhost:3000/swagger
 ```
 
 **Frontend**
